@@ -8,22 +8,22 @@ class pigeonService{
     static String[] categories = {}; 
     static String[][] itemManage = {};
 
-    private static void clearConsole(){
-        final String os = System.getProperty("os.name");
-        try {
-            if (os.equals("Linux")) {
-                System.out.print("\033\143");
-            } else if (os.equals("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (final Exception e) {
-            System.err.println(e.getMessage());
+    private static void clearConsole() {
+    final String os = System.getProperty("os.name");
+    try {
+        if (os.equals("Linux")) {
+            System.out.print("\033\143");
+        } else if (os.startsWith("Windows")) {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } else {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
         }
+    } catch (final Exception e) {
+        System.err.println(e.getMessage());
     }
-    
+}
+
     public static void grow1(){
 		String[] temp = new String[categories.length+1];
 		for (int i = 0; i < categories.length ; i++){
